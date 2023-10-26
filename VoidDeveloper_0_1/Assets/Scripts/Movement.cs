@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        SpeedChange();
         JumpLogic();
         MoveLogic();
         RotateLogic();
@@ -87,14 +88,14 @@ public class Movement : MonoBehaviour
     {
         if (_isGrounded && (Input.GetAxis("Jump") > 0))
         {
-            _rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            _rb.AddForce(transform.TransformDirection(Vector3.up * JumpForce), ForceMode.Impulse);
         }
     }
     private void deJumpLogic()
     {
         if (Input.GetKey(KeyCode.C))
         {
-            _rb.AddForce(Vector3.down * JumpForce, ForceMode.Impulse);
+            _rb.AddForce(transform.TransformDirection(Vector3.down * JumpForce), ForceMode.Impulse);
         }
     }
 
@@ -114,15 +115,15 @@ public class Movement : MonoBehaviour
             transform.Rotate(Vector3.forward * -0.5f);
         }
     }
- // private void SpeedChange()
- // {
- //     if (Input.GetKey(KeyCode.G))
- //     {
- //         Speed == Speed + 0.1f;
- //     }
- //     else if (Input.GetKey(KeyCode.G))
- //     {
-  //        Speed == Speed -0.1f;
- //     }
-//  }
+    private void SpeedChange()
+    {
+        if (Input.GetKey(KeyCode.G))
+        {
+            Speed = Speed + 0.1f;
+        }
+        else if (Input.GetKey(KeyCode.H))
+        {
+            Speed = Speed - 0.1f;
+        }
+    }
 }
