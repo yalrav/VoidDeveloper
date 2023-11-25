@@ -66,22 +66,12 @@ public class Movement : MonoBehaviour
     }
      void Update()
     {
-        if (Input.anyKey)
-        {
-            lastInputTime = Time.time;
-        }
-
-        if (Time.time - lastInputTime > idleTime)
-        {
-            Vector3 targetPosition = new Vector3(80f, 80f, transform.position.y);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime);
-            targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, Time.deltaTime);
-        }
+     
     }
 
     private void MoveLogic()
     {
-        _rb.AddForce(transform.TransformDirection(_movementVector) * Speed, ForceMode.Impulse);
+        _rb.AddForce(_movementVector * Speed, ForceMode.Impulse);
     }
 
     private void JumpLogic()
