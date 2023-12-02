@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
 
     private void MoveLogic()
     {
-        _rb.AddForce(_movementVector * Speed, ForceMode.Impulse);
+        _rb.AddForce(transform.TransformDirection(_movementVector * Speed), ForceMode.Impulse);
     }
 
     private void JumpLogic()
