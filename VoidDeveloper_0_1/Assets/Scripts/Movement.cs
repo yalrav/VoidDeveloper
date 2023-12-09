@@ -94,6 +94,13 @@ public class Movement : MonoBehaviour
         float lookHorizontal = Input.GetAxis("Mouse X");
         float lookVertical = Input.GetAxis("Mouse Y");
 
+        Debug.Log($"{lookHorizontal} {lookVertical}");
+
+        if(Input.GetKey(KeyCode.X)) 
+        {
+            _rb.angularVelocity /= 1.1f;
+        }
+
         transform.Rotate(Vector3.up * lookHorizontal * 0.7f);
         transform.Rotate(Vector3.right * lookVertical * 0.7f);
         if (Input.GetKey(KeyCode.Q))
