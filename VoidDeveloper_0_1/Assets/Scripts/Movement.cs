@@ -93,9 +93,6 @@ public class Movement : MonoBehaviour
     {
         float lookHorizontal = Input.GetAxis("Mouse X");
         float lookVertical = Input.GetAxis("Mouse Y");
-
-        Debug.Log($"{lookHorizontal} {lookVertical}");
-
         if(Input.GetKey(KeyCode.X)) 
         {
             _rb.angularVelocity /= 1.1f;
