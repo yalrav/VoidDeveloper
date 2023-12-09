@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 156184967}
   - component: {fileID: 156184968}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: "\u0433\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,12 +170,12 @@ MonoBehaviour:
   objects:
   - {fileID: 418472663}
   - {fileID: 716624401}
-  random1: 100000
-  random2: -100000
-  random3: 1000
+  random1: 500000
+  random2: -500000
+  random3: 5000
   random4: 9999
-  minScale: 5000
-  maxScale: 9999
+  minScale: 3000
+  maxScale: 6000
 --- !u!1 &224970270
 GameObject:
   m_ObjectHideFlags: 0
