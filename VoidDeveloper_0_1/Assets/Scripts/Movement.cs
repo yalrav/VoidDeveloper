@@ -16,6 +16,10 @@ public class Movement : MonoBehaviour
 
     private Rigidbody _rb;
     private CapsuleCollider _collider;
+
+    [SerializeField]
+    private float _maxVelocity = 120;
+
     private bool _isGrounded
     {
         get
@@ -72,6 +76,17 @@ public class Movement : MonoBehaviour
     private void MoveLogic()
     {
         _rb.AddForce(transform.TransformDirection(_movementVector * Speed), ForceMode.Impulse);
+        if (Input.GetKey(KeyCode.Z))
+        {
+            _rb.velocity /= 1.03f;
+        }
+
+
+        if (_rb.velocity.magnitude > _maxVelocity)
+        {
+            var norma = _rb.velocity.normalized;
+            _rb.velocity = norma * _maxVelocity;
+        }
     }
 
     private void JumpLogic()
@@ -97,6 +112,7 @@ public class Movement : MonoBehaviour
         {
             _rb.angularVelocity /= 1.1f;
         }
+
 
         transform.Rotate(Vector3.up * lookHorizontal * 0.7f);
         transform.Rotate(Vector3.right * lookVertical * 0.7f);
