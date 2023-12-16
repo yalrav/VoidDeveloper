@@ -503,11 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eba4ab1abb1d12448603b60fd628450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  rotationSpeed: 10
-  idleTime: 5
-  lastInputTime: 0
-  targetRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &238170199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6816ba58fcee1c148bd099ef29c7568e, type: 3}
