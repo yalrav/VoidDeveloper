@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     public float Speed = 0.3f;
     private bool rotationEnabled = true;
-    public float JumpForce = 1f;
+    public float JumpForce = 2f;
     public float idleTime = 5f;
     private float lastInputTime;
     private Vector3 targetRotation;
