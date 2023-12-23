@@ -14,6 +14,15 @@ public class Movement : MonoBehaviour
     private Vector3 targetRotation;
     public LayerMask GroundLayer = 1; // 1 == "Default"
 
+    [SerializeField]
+    private Camera _camera;
+
+    [SerializeField]
+    private int intMaxView = 120;
+
+    [SerializeField]
+    private int _minView = 70;
+
     private Rigidbody _rb;
     private CapsuleCollider _collider;
 
@@ -81,6 +90,14 @@ public class Movement : MonoBehaviour
             _rb.velocity /= 1.03f;
         }
 
+        //70 ~ 0
+        //90 ~ max
+
+        var speed = _rb.velocity.magnitude;
+        var step = (intMaxView - _minView);
+
+        var relativeSpeed = speed / _maxVelocity;
+        _camera.fieldOfView = _minView + relativeSpeed * step;
 
         if (_rb.velocity.magnitude > _maxVelocity)
         {
@@ -114,15 +131,15 @@ public class Movement : MonoBehaviour
         }
 
 
-        transform.Rotate(Vector3.up * lookHorizontal * 0.7f);
-        transform.Rotate(Vector3.right * lookVertical * 0.7f);
+        transform.Rotate(Vector3.up * lookHorizontal * 0.3f);
+        transform.Rotate(Vector3.right * lookVertical * 0.3f);
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.Rotate(Vector3.forward * 0.5f);
+            transform.Rotate(Vector3.forward * 0.7f);
         }
         else if (Input.GetKey(KeyCode.E))
         {
-            transform.Rotate(Vector3.forward * -0.5f);
+            transform.Rotate(Vector3.forward * -0.7f);
         }
     }
     private void SpeedChange()
