@@ -1,10 +1,13 @@
+using Assets.Multiplayer;
+using Assets.Multiplayer.Attributes;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 
+[NetworkOptions(NetworkProto.Transform)]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehavior
 {
     public float Speed = 0.3f;
     private bool rotationEnabled = true;
