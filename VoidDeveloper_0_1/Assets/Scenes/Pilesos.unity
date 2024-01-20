@@ -1386,6 +1386,8 @@ GameObject:
   m_Component:
   - component: {fileID: 855169612}
   - component: {fileID: 855169611}
+  - component: {fileID: 855169613}
+  - component: {fileID: 855169614}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1470,6 +1472,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 156184967}
   m_LocalEulerAnglesHint: {x: -55.111, y: -145.813, z: 174.734}
+--- !u!114 &855169613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855169610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ff6123492c32a4c969621cfc130553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Port: 5000
+  IP: 192.168.1.147
+  PortDistanation: 5001
+  IPDistanation: 
+  DebugServerStart: 1
+  DebugClientStart: 0
+  ConfigurationFromFile: 0
+  NetworkAdapter: {fileID: 855169614}
+--- !u!114 &855169614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855169610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e32d8a14962bd4439dddf6d9712f593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _findAllBehaviour: 0
+  _findProtoTransform: 1
+  _isDebug: 1
 --- !u!1 &895047266
 GameObject:
   m_ObjectHideFlags: 0
