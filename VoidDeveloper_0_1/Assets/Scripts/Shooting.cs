@@ -23,5 +23,6 @@ public class Shooting : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.position, spawnPoint.rotation);
         Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
         projectileRigidbody.velocity = transform.forward * speed;
+        Destroy(projectile, 1f);
     }
-}
+}   

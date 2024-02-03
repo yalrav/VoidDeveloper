@@ -515,6 +515,8 @@ GameObject:
   m_Component:
   - component: {fileID: 156184967}
   - component: {fileID: 156184968}
+  - component: {fileID: 156184970}
+  - component: {fileID: 156184969}
   m_Layer: 0
   m_Name: "\u0433\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F"
   m_TagString: Untagged
@@ -575,6 +577,35 @@ MonoBehaviour:
   minScale: 100
   maxScale: 500
   nondegenerateCube: {fileID: 1452666337}
+--- !u!114 &156184969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156184965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df345131b8bd9034f94cf59712f84705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &156184970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156184965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ac64b749fccdf4288d18f7bd72c5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 667617958}
+  menuAvailable: 1
+  continueButton: {fileID: 0}
+  restartButton: {fileID: 0}
+  exitButton: {fileID: 0}
 --- !u!4 &160964866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2512471435920213733, guid: 682110751a086a64ea646fc284f0b150, type: 3}
@@ -1569,6 +1600,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664070136}
   m_CullTransparentMesh: 1
+--- !u!1 &667617958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1841570873457930, guid: c590b17884b119046bc6412066500b7d, type: 3}
+  m_PrefabInstance: {fileID: 2141417035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &750334803
 GameObject:
   m_ObjectHideFlags: 0
