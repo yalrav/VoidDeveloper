@@ -602,10 +602,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 667617958}
-  menuAvailable: 1
+  startMenu: {fileID: 0}
+  confirmExitMenu: {fileID: 0}
+  background: {fileID: 664070138}
   continueButton: {fileID: 0}
   restartButton: {fileID: 0}
   exitButton: {fileID: 0}
+  confirmExitButton: {fileID: 0}
+  cancelExitButton: {fileID: 0}
 --- !u!4 &160964866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2512471435920213733, guid: 682110751a086a64ea646fc284f0b150, type: 3}
@@ -1335,6 +1339,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1995714334}
   fireRate: 0.2
   speed: 2700
+  objectsToRemove: []
 --- !u!1 &461687704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,6 +3245,7 @@ GameObject:
   - component: {fileID: 2109694530}
   - component: {fileID: 2109694529}
   - component: {fileID: 2109694533}
+  - component: {fileID: 2109694534}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -3360,6 +3366,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2109694534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109694528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cbc8b1305b41b478d8c7d6259cc326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 0}
 --- !u!1001 &2141417035
 PrefabInstance:
   m_ObjectHideFlags: 0

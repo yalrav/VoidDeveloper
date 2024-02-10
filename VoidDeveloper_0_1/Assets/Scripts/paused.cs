@@ -9,7 +9,9 @@ public class paused : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
-    private bool menuAvailable = true;
+    private GameObject gameCamera;
+    [SerializeField]
+    private bool isPaused = false;
     [SerializeField]
     private Button continueButton, restartButton, exitButton;
 
@@ -20,38 +22,49 @@ public class paused : MonoBehaviour
         exitButton.onClick.AddListener(Exit);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseMenu.SetActive(menuAvailable);
-            menuAvailable = !menuAvailable;
+            TogglePause();
         }
+    }
 
-        if (!menuAvailable)
+    private void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
         {
             Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+            gameCamera.SetActive(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             Time.timeScale = 1;
+            pauseMenu.SetActive(false);
+            gameCamera.SetActive(true);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
-    void Continue()
+    private void Continue()
     {
-        pauseMenu.SetActive(menuAvailable);
-        menuAvailable = !menuAvailable;
+        TogglePause();
     }
 
-    void Restart()
+    private void Restart()
     {
         SceneManager.LoadScene("Gameplay");
     }
 
-    void Exit()
+    private void Exit()
     {
+        // Добавьте здесь подтверждение выхода перед выходом из игры
         Application.Quit();
     }
 }
