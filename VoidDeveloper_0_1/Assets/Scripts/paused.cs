@@ -12,14 +12,10 @@ public class paused : MonoBehaviour
     private GameObject gameCamera;
     [SerializeField]
     private bool isPaused = false;
-    [SerializeField]
-    private Button continueButton, restartButton, exitButton;
 
     private void Start()
     {
-        continueButton.onClick.AddListener(Continue);
-        restartButton.onClick.AddListener(Restart);
-        exitButton.onClick.AddListener(Exit);
+
     }
 
     private void Update()
@@ -28,6 +24,11 @@ public class paused : MonoBehaviour
         {
             TogglePause();
         }
+    }
+
+    public void Set()
+    {
+        TogglePause();
     }
 
     private void TogglePause()
@@ -50,21 +51,5 @@ public class paused : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-    }
-
-    private void Continue()
-    {
-        TogglePause();
-    }
-
-    private void Restart()
-    {
-        SceneManager.LoadScene("Gameplay");
-    }
-
-    private void Exit()
-    {
-        // Добавьте здесь подтверждение выхода перед выходом из игры
-        Application.Quit();
     }
 }
