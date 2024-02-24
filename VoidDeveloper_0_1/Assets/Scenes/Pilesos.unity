@@ -602,7 +602,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1435161330}
-  gameCamera: {fileID: 377758155}
+  gameCamera:
+  - {fileID: 377758155}
+  - {fileID: 1738018919}
+  - {fileID: 750334803}
+  - {fileID: 1022477867}
+  - {fileID: 7039793}
+  pause_button: {fileID: 1122155473}
   isPaused: 0
 --- !u!4 &160964866 stripped
 Transform:
@@ -1138,6 +1144,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e009b80f91f31264eb43c5c4c067a5a2, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e009b80f91f31264eb43c5c4c067a5a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,7 +9,9 @@ public class paused : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
-    private GameObject gameCamera;
+    private GameObject[] gameCamera;
+    [SerializeField]
+    private GameObject pause_button;
     [SerializeField]
     private bool isPaused = false;
 
@@ -39,7 +41,11 @@ public class paused : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
-            gameCamera.SetActive(false);
+            pause_button.SetActive(true);
+            foreach (var objk in gameCamera)
+            {
+                objk.SetActive(false);
+            }
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
@@ -47,7 +53,11 @@ public class paused : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
-            gameCamera.SetActive(true);
+            pause_button.SetActive(false);
+            foreach (var objk in gameCamera)
+            {
+                objk.SetActive(true);
+            }
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
