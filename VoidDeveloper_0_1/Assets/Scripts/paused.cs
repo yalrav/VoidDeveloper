@@ -11,8 +11,10 @@ public class paused : MonoBehaviour
     [SerializeField]
     private GameObject[] gameCamera;
     [SerializeField]
-    private GameObject pause_button;
+    private GameObject Pause_text;
     [SerializeField]
+    //private GameObject pause_button;
+    //[SerializeField]
     private bool isPaused = false;
 
     private void Start()
@@ -41,7 +43,8 @@ public class paused : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
-            pause_button.SetActive(true);
+            Pause_text.SetActive(true);
+            //pause_button.SetActive(true);
             foreach (var objk in gameCamera)
             {
                 objk.SetActive(false);
@@ -53,7 +56,8 @@ public class paused : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
-            pause_button.SetActive(false);
+            Pause_text.SetActive(false);
+            //pause_button.SetActive(false);
             foreach (var objk in gameCamera)
             {
                 objk.SetActive(true);
