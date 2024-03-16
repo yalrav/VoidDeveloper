@@ -577,6 +577,7 @@ MonoBehaviour:
   minScale: 100
   maxScale: 500
   nondegenerateCube: {fileID: 1452666337}
+  "\u0441enerator": 1
 --- !u!114 &156184970
 MonoBehaviour:
   m_ObjectHideFlags: 0

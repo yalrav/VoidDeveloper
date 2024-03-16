@@ -11,31 +11,37 @@ public class ObjectGenerator : MonoBehaviour
     public float minScale = 1000;
     public float maxScale = 1000;
     public GameObject nondegenerateCube;
+    public bool ñenerator = false;
+
     private void Start()
     {
-        GenerateObjects();
+        PrintHelloWorld();
     }
-    public void GenerateObjects()
+
+    public void PrintHelloWorld()
     {
-        Bounds nondegenerateBounds = nondegenerateCube.GetComponent<Renderer>().bounds;
-        int numObjects = Random.Range(random4, random3);
-        Debug.Log(numObjects);
-        for (int i = 0; i < numObjects; i++)
+        if (ñenerator == true)
         {
-            float randomX = Random.Range(random1, random2);
-            float randomY = Random.Range(random1, random2);
-            float randomZ = Random.Range(random1, random2);
-            float randomRotateZ = Random.Range(-360, 360);
-            float randomRotateX = Random.Range(-360, 360);
-            float randomRotateY = Random.Range(-360, 360);
-            Vector3 position = new Vector3(randomX, randomY, randomZ);
-            if (!nondegenerateBounds.Contains(position))
+            Bounds nondegenerateBounds = nondegenerateCube.GetComponent<Renderer>().bounds;
+            int numObjects = Random.Range(random4, random3);
+            Debug.Log(numObjects);
+            for (int i = 0; i < numObjects; i++)
             {
+                float randomX = Random.Range(random1, random2);
+                float randomY = Random.Range(random1, random2);
+                float randomZ = Random.Range(random1, random2);
+                float randomRotateZ = Random.Range(-360, 360);
+                float randomRotateX = Random.Range(-360, 360);
+                float randomRotateY = Random.Range(-360, 360);
                 float randomScale = Random.Range(minScale, maxScale);
-                GameObject obj = Instantiate(objects[i % objects.Length], position, Quaternion.identity);
-                obj.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-                obj.transform.eulerAngles = new Vector3(randomRotateZ, randomRotateX, randomRotateY);
-                //obj.AddComponent<movecommet>();
+                Vector3 position = new Vector3(randomX, randomY, randomZ);
+                if (!nondegenerateBounds.Contains(position))
+                {
+                    GameObject obj = Instantiate(objects[i % objects.Length], position, Quaternion.identity);
+                    obj.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+                    obj.transform.eulerAngles = new Vector3(randomRotateZ, randomRotateX, randomRotateY);
+                    //obj.AddComponent<movecommet>();
+                }
             }
         }
     }
