@@ -906,7 +906,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -914,15 +914,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\gitter\VoidDeveloper\VoidDeveloper_0_1
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 58.99997}
-    m_SelectedIDs: 1c500000
-    m_LastClickedID: 20508
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: f24f0000
+    m_LastClickedID: 20466
     m_ExpandedIDs: 00000000f24f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -976,8 +976,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: fe4c0000
-    m_LastClickedInstanceID: 19710
+    m_SelectedInstanceIDs: f24f0000
+    m_LastClickedInstanceID: 20466
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e85000005e550000
     m_RenameOverlay:

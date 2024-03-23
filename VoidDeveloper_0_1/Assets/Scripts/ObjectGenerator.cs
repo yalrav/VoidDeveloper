@@ -1,5 +1,39 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using sys = System;
+using System.Linq;
+
+[sys.Serializable]
+public class MyCLass
+{
+    public List<int> Num = new List<int>();
+    public List<string> Name = new List<string>();
+    public List<Vector3> pos = new List<Vector3>();
+    public List<Vector3> size = new List<Vector3>();
+    public List<Quaternion> a = new List<Quaternion>();
+}
+
+[sys.Serializable]
+public class MyClass2
+{
+    public List<MyCLass> myCLasses;
+}
+
+public static class JsonUtilityHelper
+{
+    public static void WriteJson(string filename, object content)
+    {
+        string json = JsonUtility.ToJson(content, true);
+        File.WriteAllText(filename, json);
+    }
+
+    public static T LoadJson<T>(string filename)
+    {
+        string json = File.ReadAllText(filename);
+        return JsonUtility.FromJson<T>(json);
+    }
+}
 
 public class ObjectGenerator : MonoBehaviour
 {
@@ -25,6 +59,8 @@ public class ObjectGenerator : MonoBehaviour
             Bounds nondegenerateBounds = nondegenerateCube.GetComponent<Renderer>().bounds;
             int numObjects = Random.Range(random4, random3);
             Debug.Log(numObjects);
+
+            var list = new MyCLass();
             for (int i = 0; i < numObjects; i++)
             {
                 float randomX = Random.Range(random1, random2);
@@ -37,10 +73,32 @@ public class ObjectGenerator : MonoBehaviour
                 Vector3 position = new Vector3(randomX, randomY, randomZ);
                 if (!nondegenerateBounds.Contains(position))
                 {
-                    GameObject obj = Instantiate(objects[i % objects.Length], position, Quaternion.identity);
+                    var ind = i % objects.Length;
+                    GameObject obj = Instantiate(objects[ind], position, Quaternion.identity);
                     obj.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
                     obj.transform.eulerAngles = new Vector3(randomRotateZ, randomRotateX, randomRotateY);
                     //obj.AddComponent<movecommet>();
+
+                    list.Num.Add(ind);
+                    list.Name.Add(obj.name);
+                    list.a.Add(obj.transform.rotation);
+                    list.pos.Add(position);
+                    list.size.Add(obj.transform.localScale);
+                }
+            }
+
+            JsonUtilityHelper.WriteJson("ser.json", list);
+        }
+        else
+        {
+            MyClass2 loadedData = JsonUtilityHelper.LoadJson<MyClass2>("ser.json");
+            foreach (var myClass in loadedData.myCLasses)
+            {
+                for (int i = 0; i < myClass.Num.Count; i++)
+                {
+                    GameObject obj = Instantiate(objects[myClass.Num[i]], myClass.pos[i], myClass.a[i]);
+                    obj.name = myClass.Name[i];
+                    obj.transform.localScale = myClass.size[i];
                 }
             }
         }
