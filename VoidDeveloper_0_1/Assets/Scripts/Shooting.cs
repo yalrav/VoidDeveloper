@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     public float fireRate = 0.5f;
     public float speed = 10f;
     public List<GameObject> objectsToRemove;
+    public GameObject Player;
 
     private float nextFireTime = 0f;
 
@@ -20,11 +21,16 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    public Vector3 Ship_speed
+    {
+        get { return Player.GetComponent<Rigidbody>().velocity; }
+    }
+
     private void Shoot()
     {
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.position, spawnPoint.rotation);
         Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-        projectileRigidbody.velocity = transform.forward * speed;
+        projectileRigidbody.velocity = transform.forward * speed + Ship_speed;
         objectsToRemove.Add(projectile);
         Destroy(projectile, 1f);
     }
