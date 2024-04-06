@@ -44,7 +44,7 @@ public class ObjectGenerator : MonoBehaviour
     public int random4 = 1000;
     public float minScale = 1000;
     public float maxScale = 1000;
-    public GameObject nondegenerateCube;
+    public GameObject[] nondegenerateCubes;
     public bool ñenerator = false;
 
     private void Start()
@@ -56,7 +56,7 @@ public class ObjectGenerator : MonoBehaviour
     {
         if (ñenerator == true)
         {
-            Bounds nondegenerateBounds = nondegenerateCube.GetComponent<Renderer>().bounds;
+            Bounds[] nondegenerateBounds = nondegenerateCubes.Select(x=>x.GetComponent<Renderer>().bounds).ToArray();
             int numObjects = Random.Range(random4, random3);
             Debug.Log(numObjects);
 
@@ -71,7 +71,7 @@ public class ObjectGenerator : MonoBehaviour
                 float randomRotateY = Random.Range(-360, 360);
                 float randomScale = Random.Range(minScale, maxScale);
                 Vector3 position = new Vector3(randomX, randomY, randomZ);
-                if (!nondegenerateBounds.Contains(position))
+                if (!nondegenerateBounds.Any(x=>x.Contains(position)))
                 {
                     var ind = i % objects.Length;
                     GameObject obj = Instantiate(objects[ind], position, Quaternion.identity);
