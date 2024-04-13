@@ -19,7 +19,6 @@ public class Guitar_generator : MonoBehaviour
     {
         Bounds nondegenerateBounds = nondegenerateCube.GetComponent<Renderer>().bounds;
         int numObjects = Random.Range(random4, random3);
-        Debug.Log(numObjects);
         for (int i = 0; i < numObjects; i++)
         {
             float randomX = Random.Range(random1, random2);

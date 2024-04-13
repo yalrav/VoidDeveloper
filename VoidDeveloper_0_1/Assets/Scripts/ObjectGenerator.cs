@@ -1,39 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using sys = System;
 using System.Linq;
-
-[sys.Serializable]
-public class MyCLass
-{
-    public List<int> Num = new List<int>();
-    public List<string> Name = new List<string>();
-    public List<Vector3> pos = new List<Vector3>();
-    public List<Vector3> size = new List<Vector3>();
-    public List<Quaternion> a = new List<Quaternion>();
-}
-
-[sys.Serializable]
-public class MyClass2
-{
-    public List<MyCLass> myCLasses;
-}
-
-public static class JsonUtilityHelper
-{
-    public static void WriteJson(string filename, object content)
-    {
-        string json = JsonUtility.ToJson(content, true);
-        File.WriteAllText(filename, json);
-    }
-
-    public static T LoadJson<T>(string filename)
-    {
-        string json = File.ReadAllText(filename);
-        return JsonUtility.FromJson<T>(json);
-    }
-}
+using System.IO;
 
 public class ObjectGenerator : MonoBehaviour
 {
@@ -46,21 +13,27 @@ public class ObjectGenerator : MonoBehaviour
     public float maxScale = 1000;
     public GameObject[] nondegenerateCubes;
     public bool ñenerator = false;
+    public string filePath = "map.txt";
 
     private void Start()
     {
-        PrintHelloWorld();
-    }
-
-    public void PrintHelloWorld()
-    {
         if (ñenerator == true)
         {
-            Bounds[] nondegenerateBounds = nondegenerateCubes.Select(x=>x.GetComponent<Renderer>().bounds).ToArray();
-            int numObjects = Random.Range(random4, random3);
-            Debug.Log(numObjects);
+            GenerateMap();
+            ñenerator = false;
+        }
+        else
+        {
+            LoadMap();
+        }
+    }
 
-            var list = new MyCLass();
+    public void GenerateMap()
+    {
+        Bounds[] nondegenerateBounds = nondegenerateCubes.Select(x => x.GetComponent<Renderer>().bounds).ToArray();
+        int numObjects = Random.Range(random4, random3);
+        using (StreamWriter sw = new StreamWriter(filePath))
+        {
             for (int i = 0; i < numObjects; i++)
             {
                 float randomX = Random.Range(random1, random2);
@@ -71,34 +44,43 @@ public class ObjectGenerator : MonoBehaviour
                 float randomRotateY = Random.Range(-360, 360);
                 float randomScale = Random.Range(minScale, maxScale);
                 Vector3 position = new Vector3(randomX, randomY, randomZ);
-                if (!nondegenerateBounds.Any(x=>x.Contains(position)))
+                if (!nondegenerateBounds.Any(x => x.Contains(position)))
                 {
                     var ind = i % objects.Length;
+                    sw.WriteLine($"{objects[ind].name} {position.x} {position.y} {position.z} {randomScale} {randomRotateZ} {randomRotateX} {randomRotateY}");
                     GameObject obj = Instantiate(objects[ind], position, Quaternion.identity);
                     obj.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
                     obj.transform.eulerAngles = new Vector3(randomRotateZ, randomRotateX, randomRotateY);
-                    //obj.AddComponent<movecommet>();
-
-                    list.Num.Add(ind);
-                    list.Name.Add(obj.name);
-                    list.a.Add(obj.transform.rotation);
-                    list.pos.Add(position);
-                    list.size.Add(obj.transform.localScale);
                 }
             }
-
-            JsonUtilityHelper.WriteJson("ser.json", list);
         }
-        else
+    }
+
+    public void LoadMap()
+    {
+        if (File.Exists(filePath))
         {
-            MyClass2 loadedData = JsonUtilityHelper.LoadJson<MyClass2>("ser.json");
-            foreach (var myClass in loadedData.myCLasses)
+            using (StreamReader sr = new StreamReader(filePath))
             {
-                for (int i = 0; i < myClass.Num.Count; i++)
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    GameObject obj = Instantiate(objects[myClass.Num[i]], myClass.pos[i], myClass.a[i]);
-                    obj.name = myClass.Name[i];
-                    obj.transform.localScale = myClass.size[i];
+                    string[] values = line.Split(' ');
+                    string objectName = values[0];
+                    GameObject obj = objects.FirstOrDefault(o => o.name == objectName);
+                    if (obj != null)
+                    {
+                        Vector3 position = new Vector3(float.Parse(values[1]), float.Parse(values[2]), float.Parse(values[3]));
+                        float scale = float.Parse(values[4]);
+                        Vector3 rotation = new Vector3(float.Parse(values[5]), float.Parse(values[6]), float.Parse(values[7]));
+                        obj = Instantiate(obj, position, Quaternion.identity);
+                        obj.transform.localScale = new Vector3(scale, scale, scale);
+                        obj.transform.eulerAngles = rotation;
+                    }
+                    else
+                    {
+                        Debug.LogError($"Object with name {objectName} not found in objects array.");
+                    }
                 }
             }
         }
