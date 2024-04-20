@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class Movement : NetworkBehavior
 {
-    public float Speed = 0.3f;
+    public float Speed = 0.5f;
     private bool rotationEnabled = true;
     public float JumpForce = 2f;
     public float idleTime = 5f;
