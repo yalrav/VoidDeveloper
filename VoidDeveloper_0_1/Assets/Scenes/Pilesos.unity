@@ -855,7 +855,7 @@ MonoBehaviour:
   nondegenerateCubes:
   - {fileID: 1452666337}
   - {fileID: 276698261}
-  "\u0441enerator": 1
+  "\u0441enerator": 0
   filePath: map.txt
 --- !u!114 &156184970
 MonoBehaviour:
@@ -887,19 +887,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 156184965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c270c4a1cac46244da1659bf03f8e568, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f3230291c77052409ab44866620bc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 362522588}
   - {fileID: 778630006}
+  - {fileID: 362522588}
   random1: 100000
   random2: -100000
   random3: 5
   random4: 5
   minScale: 10
   maxScale: 10
-  nondegenerateCube: {fileID: 1452666337}
+  nondegenerateCubes:
+  - {fileID: 1452666337}
+  - {fileID: 276698261}
+  "\u0441enerator": 0
+  filePath: achv.txt
 --- !u!4 &160964866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2512471435920213733, guid: 682110751a086a64ea646fc284f0b150, type: 3}

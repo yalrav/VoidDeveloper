@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.IO;
+using Assets.Scripts.Config;
 
 public class ObjectGenerator : MonoBehaviour
 {
@@ -14,13 +15,15 @@ public class ObjectGenerator : MonoBehaviour
     public GameObject[] nondegenerateCubes;
     public bool ñenerator = false;
     public string filePath = "map.txt";
+    private ConfigFile Config = new ConfigFile();
 
     private void Start()
     {
-        if (ñenerator == true)
+        if(Config.Read() == 1)
         {
             GenerateMap();
-            ñenerator = false;
+            Config.Write(0);
+
         }
         else
         {
