@@ -17,7 +17,7 @@ public class ObjectGenerator : MonoBehaviour
     public string filePath = "map.txt";
     private ConfigFile Config = new ConfigFile();
 
-    private void Start()
+    private void Awake()
     {
         if(Config.Read() == 1)
         {
